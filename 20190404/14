@@ -1,0 +1,12 @@
+<!doctype html>		<!-- 14.html -->
+<html><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>정문(동문)</title>
+</head>
+<body>
+<h1>정문(동문)</h1>
+<img scr="14.jpg" border=0 usemap="#14">
+<map name="14">
+<p>문이 동쪽에 있어서 동문인듯 하다.</p>
+</body>
+</html>
