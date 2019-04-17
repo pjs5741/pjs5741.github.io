@@ -2,6 +2,23 @@
 <html lang="ko">
 <head><meta charset="utf-8"/>
 <meta name="viewport"content="width=device-width,initial-scale=1"/>
+<title>숙제 </title></head>
+<body>
+<section>
+<fieldset>
+<legend>무엇을 먹을까요옹</legend>
+<select onchange="categoryChange(this)">
+  <option>메뉴를 선택하세요</option>
+  <option value="a">피자</option>
+  <option value="b">족발</option>
+   <option value="c">쭝국집</option>
+</select>
+<select id="good">
+<option>무엇을 시킬까요</option>
+</select>
+<button type="submit">
+주문</button>
+</fieldset>
 <script>
   function categoryChange(e) {
   var good_a = ["스페셜피자", "프리미엄 피자", "클래식 피자", "시카고 피자"];
@@ -23,23 +40,6 @@
   } 
 }
 </script>
-<title>숙제 </title></head>
-<body>
-<section>
-<fieldset>
-<legend>무엇을 먹을까요옹</legend>
-<select onchange="categoryChange(this)">
-  <option>메뉴를 선택하세요</option>
-  <option value="a">피자</option>
-  <option value="b">족발</option>
-   <option value="c">쭝국집</option>
-</select>
-<select id="good">
-<option>무엇을 시킬까요</option>
-</select>
-<button type="submit">
-주문</button>
-</fieldset>
 </section>
 </body>
 </html>
