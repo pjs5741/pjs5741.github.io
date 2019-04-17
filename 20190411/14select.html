@@ -1,0 +1,44 @@
+<!doctype html>	<!-- select.html -->
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>폼 학습</title></head>
+<body>
+<section>
+<form action>
+<fieldset>
+<legend>
+메뉴 선택
+</legend>
+<label for="menux">메뉴</label>
+<select id="menux"name="menu">
+<option value="순대국밥"selected>순대국밥</option>
+<option value="라면">라면</option>
+<option value="꼬기">꼬기</option>
+</select>
+<label for="detailx">세부메뉴</label>
+<select id="detailx"name="detail">
+<optgroup label ="국밥">
+  <option value="순대국밥"selected>순대국밥</option>
+<option value="설렁탕">설렁탕</option>
+<option value="소머리국밥">소머리국밥</option>
+<option value="콩나물국밥">콩나물국밥</option>
+</optgroup>
+<optgroup label="라면">
+<option value="신라면"selected>신라면</option>
+<option value="삼양라면">삼양라면</option>
+<option value="너구리">너구리</option>
+<option value="진라면">진라면</option>  
+</optgroup>
+<optgroup label="꼬기">
+<option value="돼지꼬기"selected>돼지꼬기</option>
+<option value="오리꼬기">오리꼬기</option>
+<option value="소꼬기">소꼬기</option>
+</optgroup></select>
+<button type="submit">
+등록</button>
+</fieldset>
+</form>
+</section>
+</body></html>
