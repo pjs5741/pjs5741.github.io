@@ -1,44 +1,46 @@
-<!doctype html>	<!-- select.html -->
-<html>
-<head>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>폼 학습</title></head>
+<!DOCTYPEhtml>			<!-- select.html -->
+<html lang="ko">
+<head><meta charset="utf-8"/>
+<meta name="viewport"content="width=device-width,initial-scale=1"/>
+<script>
+  function categoryChange(e) {
+  var good_a = ["스페셜피자", "프리미엄 피자", "클래식 피자", "시카고 피자"];
+  var good_b = ["족발", "마늘족발", "불족발"];
+   var good_c = ["짜장면", "짬뽕", "탕수육", "깐풍기", "양장피"];
+  var target = document.getElementById("good");
+ 
+  if(e.value == "a") var d = good_a;
+  else if(e.value == "b") var d = good_b
+  else if(e.value == "c") var d=good_c;
+ 
+  target.options.length = 0;
+ 
+  for (x in d) {
+    var opt = document.createElement("option");
+    opt.value = d[x];
+    opt.innerHTML = d[x];
+    target.appendChild(opt);
+  } 
+}
+</script>
+<title>숙제 </title></head>
 <body>
 <section>
-<form action>
 <fieldset>
-<legend>
-메뉴 선택
-</legend>
-<label for="menux">메뉴</label>
-<select id="menux"name="menu">
-<option value="순대국밥"selected>순대국밥</option>
-<option value="라면">라면</option>
-<option value="꼬기">꼬기</option>
+<legend>무엇을 먹을까요옹</legend>
+<select onchange="categoryChange(this)">
+  <option>메뉴를 선택하세요</option>
+  <option value="a">피자</option>
+  <option value="b">족발</option>
+   <option value="c">쭝국집</option>
 </select>
-<label for="detailx">세부메뉴</label>
-<select id="detailx"name="detail">
-<optgroup label ="국밥">
-  <option value="순대국밥"selected>순대국밥</option>
-<option value="설렁탕">설렁탕</option>
-<option value="소머리국밥">소머리국밥</option>
-<option value="콩나물국밥">콩나물국밥</option>
-</optgroup>
-<optgroup label="라면">
-<option value="신라면"selected>신라면</option>
-<option value="삼양라면">삼양라면</option>
-<option value="너구리">너구리</option>
-<option value="진라면">진라면</option>  
-</optgroup>
-<optgroup label="꼬기">
-<option value="돼지꼬기"selected>돼지꼬기</option>
-<option value="오리꼬기">오리꼬기</option>
-<option value="소꼬기">소꼬기</option>
-</optgroup></select>
+<select id="good">
+<option>무엇을 시킬까요</option>
+</select>
 <button type="submit">
-등록</button>
+주문</button>
 </fieldset>
-</form>
 </section>
-</body></html>
+</body>
+</html>
+
