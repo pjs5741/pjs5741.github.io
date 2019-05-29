@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device, initial-scale=1"/>
+<title>소스코드</title>
+	<link rel="stylesheet" href="menubar.css"/>
+  <body>
+<div class="menubar">
+	<center>
+<h3>
+	<a href="main.html">
+박진수's 포트폴리오
+	</a>
+</h3>
+	</center>
+<ul>
+ <li><a href="#" id="current">학력,경력</a>
+ <ul>
+     <li><a href="education.html">학력</a></li>
+     <li><a href="career.html">경력</a></li>
+    </ul>
+ </li>
+ <li><a href="#" id="current">수업 수강 내역</a>
+	<ul>
+     <li><a href="#">1학년 1학기</a></li>
+     <li><a href="#">1학년 2학기</a></li>
+     <li><a href="https://pjs5741.github.io/20190321/11myschedule.html">2학년 1학기</a></li>
+    </ul>
+ </li>
+ <li><a href="#" id="current">과목별 프로젝트</a> <ul>
+     <li><a href="#">c++</a></li>
+     <li><a href="https://pjs5741.github.io/index.html">인터넷 프로그래밍</a></li>
+    </ul></li>
+ <li><a href="#">공모전</a></li>
+  <li><a href="Circles.html">동아리</a></li>
+   <li><a href="#">봉사활동</a></li>
+</ul>
+</div>
+<pre>
+#include<iostream>
+
+#include<cmath>
+
+
+
+using namespace std;
+
+
+
+class CPoint
+
+{
+
+protected:
+
+	double m_x, m_y;
+
+public:
+
+	CPoint(double x, double y);
+
+	virtual double Compute_Unit() = 0;
+
+	virtual void Print_Point() {};
+
+};
+
+
+
+CPoint::CPoint(double x, double y)
+
+{
+
+	m_x = x;
+
+	m_y = y;
+
+}
+
+
+
+class CLengthPoint :public CPoint
+
+{
+
+	double m_z;
+
+public:
+
+	CLengthPoint(double x, double y, double z) : CPoint(x, y) 
+	{
+		m_z = z;
+	}
+
+	double Compute_Unit()
+
+	{
+
+		return sqrt((m_x*m_x) + (m_y*m_y) + (m_z*m_z));
+
+	}
+
+	void Print_Point()
+
+	{
+
+		cout.setf(ios::fixed);
+
+		cout.precision(1);
+
+		cout << "객체 lengthPt의 좌표 : (x : " << m_x << " y : " << m_y << " z : " << m_z << ")\n";
+
+
+
+	}
+
+};
+
+
+
+class CVolumePoint :public CPoint
+
+{
+
+protected:
+
+	double m_z;
+
+public:
+
+	CVolumePoint(double x, double y, double z) : CPoint(x, y)
+	{
+		m_z = z;
+	}
+
+	double Compute_Unit()
+
+	{
+
+		return m_x*m_y*m_z;
+
+	}
+
+	void Print_Point()
+
+	{
+
+		cout.setf(ios::fixed);
+
+		cout.precision(1);
+
+		cout << "객체 volumePt의 좌표 : (x : " << m_x << " y : " << m_y << " z : " << m_z << ")\n";
+
+
+
+	}
+
+};
+
+
+
+class CAreaPoint :public CVolumePoint
+
+{
+
+public:
+
+	CAreaPoint(double x, double y, double z)
+
+		:CVolumePoint(x, y, z) {};
+
+	double Compute_Unit()
+
+	{
+
+		return 2 * (m_x*m_y + m_y * m_z + m_z * m_x);
+
+	}
+
+	void Print_Point()
+
+	{
+
+		cout.setf(ios::fixed);
+
+		cout.precision(1);
+
+		cout << "객체 areaPt의 좌표 : (x : " << m_x << " y : " << m_y << " z : " << m_z << ")\n";
+
+	}
+
+};
+
+
+
+int main()
+
+{
+
+	CPoint *p;
+
+	CLengthPoint CL(5.7, 12.5, 3.4);
+
+	CVolumePoint CV(11.6, 4.1, 5.4);
+
+	CAreaPoint CA(3.7, 8.9, 4.5);
+
+
+
+	p = &CL;
+
+	p->Print_Point();
+
+	cout << "객체 lengthPt의 원점으로부터의 거리 : " << p->Compute_Unit() << endl;
+
+	p = &CV;
+
+	p->Print_Point();
+
+	cout << "객체 volumePt의 육면체 부피 : " << p->Compute_Unit() << endl;
+
+	p = &CA;
+
+	p->Print_Point();
+
+	cout << "객체 areaPt의 육면체 겉넓이 : " << p->Compute_Unit() << endl;
+
+
+
+	return 0;
+
+}
+</pre>
+</body>
+</html>
