@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device, initial-scale=1"/>
+<title>소스코드</title>
+	<link rel="stylesheet" href="menubar.css"/>
+  <body>
+<div class="menubar">
+	<center>
+<h3>
+	<a href="main.html">
+박진수's 포트폴리오
+	</a>
+</h3>
+	</center>
+<ul>
+ <li><a href="#" id="current">학력,경력</a>
+ <ul>
+     <li><a href="education.html">학력</a></li>
+     <li><a href="career.html">경력</a></li>
+    </ul>
+ </li>
+ <li><a href="#" id="current">수업 수강 내역</a>
+	<ul>
+     <li><a href="#">1학년 1학기</a></li>
+     <li><a href="#">1학년 2학기</a></li>
+     <li><a href="https://pjs5741.github.io/20190321/11myschedule.html">2학년 1학기</a></li>
+    </ul>
+ </li>
+ <li><a href="#" id="current">과목별 프로젝트</a> <ul>
+     <li><a href="#">c++</a></li>
+     <li><a href="https://pjs5741.github.io/index.html">인터넷 프로그래밍</a></li>
+    </ul></li>
+ <li><a href="#">공모전</a></li>
+  <li><a href="Circles.html">동아리</a></li>
+   <li><a href="#">봉사활동</a></li>
+</ul>
+</div>
+<pre>
+#include<iostream>
+
+#include<string>
+
+
+
+using namespace std;
+
+class Employee
+
+{
+
+	string m_name, m_position;
+
+	int m_position_level;
+
+	int m_year;
+
+	int m_allowance;
+
+	int m_basic_salary[6], m_gross_salary;
+
+public:
+
+	Employee();
+
+	Employee(string name, string position, int year);
+
+	void Set_Name(string name);
+
+	bool Set_Position(string position);
+
+	void Set_Year(int year);
+
+	string Get_Name();
+
+	string Get_Position();
+
+	int Get_Year();
+
+	int Get_Salary();
+
+	int Compute_Salary();
+
+	void Print_Result();
+
+};
+
+
+
+string Employee::Get_Name()
+
+{
+
+	return m_name;
+
+}
+
+
+
+string Employee::Get_Position()
+
+{
+
+	return m_position;
+
+}
+
+
+
+int Employee::Get_Year()
+
+{
+
+	return m_year;
+
+}
+
+
+
+int Employee::Get_Salary()
+
+{
+
+	return m_gross_salary;
+
+}
+
+
+
+void Employee::Set_Name(string name)
+
+{
+
+	m_name = name;
+
+}
+
+
+
+bool Employee::Set_Position(string position)
+
+{
+
+	if (position == "사원" || position == "대리" || position == "과장" || position == "차장" || position == "부장" || position == "이사")
+
+	{
+
+		if (position == "사원")
+
+		{
+
+			m_position_level = 0;
+
+		}
+
+		else if (position == "대리")
+
+		{
+
+			m_position_level = 1;
+
+		}
+
+		else if (position == "과장")
+
+		{
+
+			m_position_level = 2;
+
+		}
+
+		else if (position == "차장")
+
+		{
+
+			m_position_level = 3;
+
+		}
+
+		else if (position == "부장")
+
+		{
+
+			m_position_level = 4;
+
+		}
+
+		else if (position == "이사")
+
+		{
+
+			m_position_level = 5;
+
+		}
+
+		m_position = position;
+
+		return true;
+
+	}
+
+	else
+
+	{
+
+		m_position_level = -1;
+
+		return false;
+
+	}
+
+}
+
+
+
+void Employee::Set_Year(int year)
+
+{
+
+	m_year = year;
+
+}
+
+
+
+Employee::Employee()
+
+{
+
+	int i;
+
+	m_allowance = 100000;
+
+	for (i = 0; i < 6; i++)
+
+	{
+
+		m_basic_salary[i] = 2000000 + (i * 500000);
+
+	}
+
+
+
+}
+
+
+
+Employee::Employee(string name, string position, int year)
+
+{
+
+	int i;
+
+	m_name = name;
+
+	Set_Position(position);
+
+	m_year = year;
+
+	m_allowance = 100000;
+
+	for (i = 0; i < 6; i++)
+
+	{
+
+		m_basic_salary[i] = 2000000 + (i * 500000);
+
+	}
+
+}
+
+
+
+int Employee::Compute_Salary()
+
+{
+
+	if (m_year >= 5 && m_year < 10)
+
+	{
+
+		m_gross_salary = m_basic_salary[m_position_level] + (50000 * m_year) + m_allowance * 5;
+
+	}
+
+	else if (m_year >= 10 && m_year < 20)
+
+	{
+
+		m_gross_salary = m_basic_salary[m_position_level] + (50000 * m_year) + m_allowance * 10;
+
+	}
+
+	else if (m_year >= 20 && m_year < 30)
+
+	{
+
+		m_gross_salary = m_basic_salary[m_position_level] + (50000 * m_year) + m_allowance * 20;
+
+	}
+
+	else if (m_year >= 30)
+
+	{
+
+		m_gross_salary = m_basic_salary[m_position_level] + (50000 * m_year) + m_allowance * 30;
+
+	}
+
+	else
+
+	{
+
+		m_gross_salary = m_basic_salary[m_position_level] + (50000 * m_year) + m_allowance;
+
+	}
+
+	return m_gross_salary;
+
+}
+
+
+
+void Employee::Print_Result()
+
+{
+
+	cout << Get_Name() << " " << Get_Position() << "의 총 근무 년수는" << Get_Year() << "년 입니다." << endl;
+
+	cout << Get_Name() << " " << Get_Position() << "의 봉급은" << Compute_Salary() << "입니다." << endl << endl;
+
+
+
+}
+
+
+
+int main()
+
+{
+
+	string a, b;
+
+	int c;
+
+
+
+
+
+	Employee Informations[3] = { Employee("홍길동", "과장" ,17),Employee("장길산", "부장" ,23),Employee("임꺽정", "이사" ,34) };
+
+	Employee *Information;
+
+	Information = Informations;
+
+	for (Information = Informations; Information <= Informations + 2; Information++)
+
+	{
+
+		Information->Compute_Salary();
+
+		Information->Print_Result();
+
+	}
+
+	cout << "종업원의 이름을 입력하세요. : ";
+
+	cin >> a;
+
+	Informations[0].Set_Name(a);
+
+
+
+	cout << "종업원의 직급을 입력하세요. : ";
+
+	cin >> b;
+
+	while (Informations->Set_Position(b) == false)
+
+	{
+
+		cout << "**에러 발생. 사원, 대리, 과장, 차장, 부장, 이사 중에서 입력하세요 **" << endl << endl;
+
+		cout << "종업원의 직급을 입력하세요 :";
+
+		cin >> b;
+
+	}
+
+	Informations[0].Set_Position(b);
+
+
+
+	cout << "종업원의 근무 년수를 입력하세요. :";
+
+	cin >> c;
+
+	Informations[0].Set_Year(c);
+
+	Informations[0].Compute_Salary();
+
+
+
+	cout << Informations[0].Get_Name() << " " << Informations[0].Get_Position() << "의 총 근무 년수는" << Informations[0].Get_Year() << "년 입니다." << endl;
+
+	cout << Informations[0].Get_Name() << " " << Informations[0].Get_Position() << "의 봉급은" << Informations[0].Compute_Salary() << "입니다." << endl << endl;
+
+
+
+	delete Information;
+
+
+
+	return 0;
+
+}
+
+
+</pre>
+</body>
+</html>
