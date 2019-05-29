@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device, initial-scale=1"/>
+<title>소스코드</title>
+	<link rel="stylesheet" href="menubar.css"/>
+  <body>
+<div class="menubar">
+	<center>
+<h3>
+	<a href="main.html">
+박진수's 포트폴리오
+	</a>
+</h3>
+	</center>
+<ul>
+ <li><a href="#" id="current">학력,경력</a>
+ <ul>
+     <li><a href="education.html">학력</a></li>
+     <li><a href="career.html">경력</a></li>
+    </ul>
+ </li>
+ <li><a href="#" id="current">수업 수강 내역</a>
+	<ul>
+     <li><a href="#">1학년 1학기</a></li>
+     <li><a href="#">1학년 2학기</a></li>
+     <li><a href="https://pjs5741.github.io/20190321/11myschedule.html">2학년 1학기</a></li>
+    </ul>
+ </li>
+ <li><a href="#" id="current">과목별 프로젝트</a> <ul>
+     <li><a href="#">c++</a></li>
+     <li><a href="https://pjs5741.github.io/index.html">인터넷 프로그래밍</a></li>
+    </ul></li>
+ <li><a href="#">공모전</a></li>
+  <li><a href="Circles.html">동아리</a></li>
+   <li><a href="#">봉사활동</a></li>
+</ul>
+</div>
+<pre>
+#include <iostream>
+
+#include<string>
+
+
+
+using namespace std;
+
+
+
+class Employee {
+
+protected:
+
+	string m_name;
+
+	int m_payRate;
+
+	float m_hoursWorked;
+
+public:
+
+	Employee();
+
+	Employee(string name, int payRate, float hoursWorked);
+
+	void Set_Name(string name);
+
+	void Set_PayRate(int PayRate);
+
+	void Set_HoursWorked(float hoursWorked);
+
+	string Get_Name();
+
+	int Get_PayRate();
+
+	float Get_HoursWorked();
+
+	float Compute_Salary();
+
+	void Print_Info();
+
+};
+
+Employee::Employee()
+
+{
+
+	m_name = "NONE";
+
+	m_payRate = 0;
+
+	m_hoursWorked = 0.0;
+
+}
+
+Employee::Employee(string name, int payRate, float hoursWorked)
+
+{
+
+	m_name = name;
+
+	m_payRate = payRate;
+
+	m_hoursWorked = hoursWorked;
+
+}
+
+void Employee::Set_Name(string name)
+
+{
+
+	m_name = name;
+
+}
+
+void Employee::Set_PayRate(int payRate)
+
+{
+
+	m_payRate = payRate;
+
+}
+
+void Employee::Set_HoursWorked(float hoursWorked)
+
+{
+
+	m_hoursWorked = hoursWorked;
+
+}
+
+string Employee::Get_Name()
+
+{
+
+	return m_name;
+
+}
+
+int Employee::Get_PayRate()
+
+{
+
+	return m_payRate;
+
+}
+
+float Employee::Get_HoursWorked()
+
+{
+
+	return m_hoursWorked;
+
+}
+
+float Employee::Compute_Salary()
+
+{
+
+	return m_payRate*m_hoursWorked;
+
+}
+
+void Employee::Print_Info()
+
+{
+
+	cout << "이름 : " << m_name << endl;
+
+	cout << "시간당 급여 : " << m_payRate << endl;
+
+	cout << "근무 시간 : " << m_hoursWorked << endl;
+
+	cout << "총 급여 : " << Compute_Salary() << endl;
+
+}
+
+
+
+class Manager :public Employee {
+
+	bool m_fullTime;
+
+public:
+
+	Manager();
+
+	Manager(string name, int payRate, float hoursWorked, bool fullTime);
+
+	bool Get_FullTime();
+
+	void Set_FullTime(bool fullTime);
+
+	float Compute_Salary();
+
+	void Print_Info();
+
+};
+
+
+
+Manager::Manager()
+
+{
+
+	m_fullTime = true;
+
+}
+
+Manager::Manager(string name, int payRate, float hoursWorked, bool fullTime)
+
+{
+
+	m_name = name;
+
+	m_payRate = payRate;
+
+	m_hoursWorked = hoursWorked;
+
+	m_fullTime = fullTime;
+
+}
+
+bool Manager::Get_FullTime()
+
+{
+
+	return m_fullTime;
+
+}
+
+void Manager::Set_FullTime(bool fullTime)
+
+{
+
+	m_fullTime = fullTime;
+
+}
+
+float Manager::Compute_Salary()
+
+{
+
+	double A;
+
+
+
+	if (m_fullTime == true)
+
+	{
+
+		m_hoursWorked = 40.0;
+
+		A = m_payRate * 1.5*m_hoursWorked;
+
+		return A;
+
+
+
+	}
+
+	else if (m_fullTime == false)
+
+	{
+
+		return Employee::Compute_Salary();
+
+	}
+
+
+
+}
+
+void Manager::Print_Info()
+
+{
+
+	if (m_fullTime == true)
+
+	{
+
+		cout << "이름 : " << m_name << endl;
+
+		cout << "시간당 급여 : " << m_payRate << endl;
+
+		cout << "정규직 매니저\n" << "근무시간 40시간 고정\n";
+
+		cout << "총 급여 : " << Compute_Salary() << endl << endl;
+
+	}
+
+	else if (m_fullTime == false)
+
+	{
+
+		cout << "이름 : " << m_name << endl;
+
+		cout << "시간당 급여 : " << m_payRate << endl;
+
+		cout << "비정규직 매니저\n";
+
+		cout << "근무 시간 : " << m_hoursWorked << endl;
+
+		cout << "총 급여 : " << Compute_Salary() << endl << endl;
+
+	}
+
+}
+
+
+
+int main()
+
+{
+
+	Employee m1("장길산", 8000, 32.0);
+
+	Manager m2("홍길동", 12000, 28.0, true), m3;
+
+
+
+	cout << "<종업원>" << endl;
+
+	m1.Print_Info();
+
+	cout << "***** 종업원 PayRate 및 hours 변경 *****" << endl;
+
+	m1.Set_PayRate(8500);
+
+	m1.Set_HoursWorked(40.0);
+
+	cout << endl;
+
+	cout << "시간당 급여 : " << m1.Get_PayRate() << endl;
+
+	cout << "근무 시간 : " << m1.Get_HoursWorked() << endl;
+
+	cout << "총급여 : " << m1.Compute_Salary() << endl << endl;
+
+
+
+	cout << "<매니저1>" << endl;
+
+	m2.Print_Info();
+
+	cout << "***** 매니저 PayRate 및 hours 변경 *****" << endl;
+
+	m2.Set_PayRate(13500);
+
+	m2.Set_HoursWorked(35.0);
+
+	cout << "시간당 급여 : " << m2.Get_PayRate() << endl;
+
+	cout << "총급여 : " << m2.Compute_Salary() << endl << endl;
+
+
+
+	cout << "<매니저2>" << endl;
+
+	m3.Print_Info();
+
+	cout << "***** 매니저 R이름, PayRate 및 hours 변경 *****" << endl;
+
+	m3.Set_Name("박문수");
+
+	m3.Set_PayRate(12000);
+
+	m3.Set_HoursWorked(25.5);
+
+	m3.Set_FullTime(false);
+
+	m3.Print_Info();
+
+
+
+	return 0;
+
+}
+
+</pre>
+</body>
+</html>
