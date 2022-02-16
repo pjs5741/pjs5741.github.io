@@ -9,18 +9,18 @@
 		<p><h4>네임스페이스란<h4> 개체를 구분할 수 있는 범위를 나타내는 말로 일반적으로 하나의 에서는 하나의 이름이 단 하나의 개체만을 가리키게 된다. </p>
     <p>예를 들면
       
-      namespace Jack{
-      double pail;
-      void fetch();
-      int pal;
-      struct Well {...}
-      }
-      namespace Jill{
-      double bucket(double n) {...}
-      double fetch;
-      int pal;
-      struct Hill {...};
-      }
+      namespace Jack{<br>
+      double pail;<br>
+      void fetch();<br>
+      int pal;<br>
+      struct Well {...}<br>
+      }<br>
+      namespace Jill{<br>
+      double bucket(double n) {...}<br>
+      double fetch;<br>
+      int pal;<br>
+      struct Hill {...};<br>
+      }<br>
       
       이렇게 두개의 네임스페이스를 만들면 Jack과 Jill의 fetch는 공존할 수 있고, Jill의Hill은 외부 Hill과 공존할 수 있다.<br>
       접근하는 방법은 연산자::를 사용하며<br>
